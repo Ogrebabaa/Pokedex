@@ -38,7 +38,7 @@ let getJapanName = (poke_name) => {
         if (request.status >= 200 && request.status < 400) {
             let data = JSON.parse(this.response)
             japaneseName = data["names"][0]["name"]
-            dom_poke_name.innerHTML += " ["+japaneseName+"]"
+            dom_poke_name.innerHTML += " "+japaneseName
         } else {
             console.log('Erreur de chargement des pokémons.')
         }

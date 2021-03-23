@@ -2,6 +2,11 @@ body {
     margin: 0;
 }
 
+@font-face {
+    font-family: early-gameboy;
+    src: url("/font/Early\ GameBoy.ttf");
+}
+
 /* Global */
 .flex-content-center {
     flex-direction: column;
@@ -128,6 +133,10 @@ body {
     .img_pokemon {
         height: 60%;
         width: 60%;
+    }
+
+    #name_pokemon {
+        font-family: early-gameboy ;
     }
 
     .info_pokemon {
