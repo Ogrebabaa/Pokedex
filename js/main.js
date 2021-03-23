@@ -7,7 +7,7 @@ var dom_poke_img = document.getElementById("img_pokemon")
 // Méthodes
 let playSound = (pokeName) => {
     //! a finir
-    let cries = new Object()
+    let url = "http://www3.futaie.org:4281/~moreauv/pokedex/sons/"
     fetch("http://localhost:8888/pokedex-v2/cries.json")
     .then(response => {
         return response.json();
@@ -15,20 +15,18 @@ let playSound = (pokeName) => {
     .then(data => {
         index = 0
         data.forEach(element => {
-            cries = {index : element.filename}
-            index++
+            filename_from_json = element.fileName.toLowerCase()
+            if (filename_from_json.includes(pokeName.toLowerCase()+".wav")) {
+                url += element.fileName
+                // console.log(url);
+                let audio = new Audio(url)
+                audio.play();
+            }
         });
         
 
     })
-
-    console.log(cries);
-    for(let i = 0; i < cries.length ; i++) {
-        console.log(i);
-    }
-
-    // let audio = new Audio(testSon)
-    // audio.play();
+    
 }
 
 let getJapanName = (poke_name) => {
@@ -72,7 +70,7 @@ let getPokemon = (id, shiny) => {
             dom_poke_img.src = pokemon_info["img"]
             dom_poke_img.alt = pokemon_info["id"]
 
-            playSound("toto")
+            playSound(pokemon_info["name"])
             
         } else {
             console.log('Erreur de chargement des pokémons.')
